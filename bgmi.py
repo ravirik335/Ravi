@@ -1,5 +1,4 @@
 #script by @MEXDEVELOPER
-
 import telebot
 import subprocess
 import datetime
